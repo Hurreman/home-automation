@@ -1,0 +1,147 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        title Hurreautomation
+        link(rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400")
+        link(rel="stylesheet" href="http://fonts.googleapis.com/css?family=Unica+One")
+        link(rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css")
+        link(rel="stylesheet" href="bower_components/nouislider/distribute/nouislider.min.css")
+        //link(rel="stylesheet" href="assets/noUiSlider.7.0.10/jquery.nouislider.pips.css")
+        link(rel="stylesheet" href="assets/webfont/climacons-font.css")
+        link(rel="stylesheet" href="assets/css/main.css")
+
+
+        meta(name="viewport", content="width=device-width, initial-scale=1, user-scalable=no")
+
+        script(src="bower_components/jquery/dist/jquery.min.js")
+        script(src="bower_components/fastclick/lib/fastclick.js")
+        script(src="bower_components/velocity/velocity.min.js")
+        script(src="bower_components/velocity/velocity.ui.min.js")
+    
+        meta(name="mobile-web-app-capable", content="yes")
+        meta(name="apple-mobile-web-app-capable", content="yes")
+
+        script#deviceTpl(type="x-tmpl-mustache").
+            <div class="Device {{ classes }}" data-device="{{ id }}" data-type="{{ type }}" data-status="{{ status }}" {{#dimlevel}}data-dimlevel="{{ dimlevel }}{{/dimlevel}}">
+                <div class="Name">
+                    <div class="Inner"></div>
+                    <div class="Overlay">
+                        {{ name }}
+                    </div>
+                </div>
+                <div class="Controls">
+                    <div class="Slider"></div>
+                </div>
+            </div>
+
+        script#deviceTplSwitch(type="x-tmpl-mustache").
+            <div class="Device Switch {{ classes }}" data-device="{{ id }}" data-type="{{ type }}" data-status="{{ status }}" {{#dimlevel}}data-dimlevel="{{ dimlevel }}{{/dimlevel}}">
+                <div class="Name">{{ name }}</div>
+                <div class="Controls Switch">
+                    <a class="Off">Off</a>
+                    <a class="On">On</a>
+                </div>
+            </div>
+    body
+        div#Auth
+            form
+                h2
+                    | Access restricted
+                    input(type="password" id="PWD" placeholder="Password" maxlength="4")
+        div#Wrapper
+            div.Screens.cf
+                div#Devices.Screen
+                    h3
+                        a.MenuIcon
+                            i.fa.fa-bars
+                        span
+                            | Lighting control
+                    //
+                        div.Toolbar
+                            div.Off.Button
+                                div.Inner
+                                div.Overlay
+                                    i.fa.fa-moon-o
+                                    span
+                                        | All off
+                    div#Tellstick
+                    div#TellstickOverlay
+                        i.fa.fa-spinner.fa-spin.fa-5x
+                    div.Planrit
+                        include planrit.svg
+                    div.ScreenMenu
+                        a.Close
+                            i.fa.fa-close
+                        ul
+                            li
+                                a(href="#")
+                                    i.fa.fa-moon-o
+                                    em
+                                        |  Turn all lights off
+                            li
+                                a.EditDevices(href="#")
+                                    i.fa.fa-cog
+                                    em
+                                        |  Edit devices
+                div#Weather.Screen
+                    h3
+                        | Weather
+                div#Log.Screen
+                    h3
+                        | Event Log
+                    div.Log
+                div#Sensors.Screen
+                    h3
+                        | Temperature / Humidity log
+                    div#chartWrapper.cf
+                        div.Temperature
+                            div.Chart#tempChart(data-unit=" °C", data-label="Temperature last 12h", data-type="temperature", data-deviceid="11|12|54|135|121", data-interval="hour", data-limit="12")
+                            div.Chart#tempChart2(data-unit=" °C", data-label="Temperature last 14 days", data-type="temperature", data-deviceid="11|12|54|135|121", data-interval="day", data-limit="14")
+                        div.Humidity
+                            div.Chart#humidityChart(data-unit=" %", data-label="Humidity last 12h", data-type="humidity", data-deviceid="11|12|54|135|121", data-interval="hour", data-limit="12")
+                            div.Chart#humidityChart2(data-unit=" %", data-label="Humidity last 14 days", data-type="humidity", data-deviceid="11|12|54|135|121", data-interval="day", data-limit="14")
+
+            div#Menu
+                div.Devices.Button(data-screen="Devices")
+                    div.Inner
+                    div.Overlay
+                        i.fa.fa-lightbulb-o
+                        span
+                            | Lighting
+                div.Sensors.Button(data-screen="Sensors")
+                    div.Inner
+                    div.Overlay
+                        i.fa.fa-bar-chart
+                        span
+                            | Sensors
+                //
+                    div.Weather.Button(data-screen="Weather")
+                        div.Inner
+                        div.Overlay
+                            i.fa.fa-cloud
+                            span
+                                | Weather
+                div.Logscreen.Button(data-screen="Log")
+                    div.Inner
+                    div.Overlay
+                        i.fa.fa-cog
+                        span
+                            | Weather
+
+            script(src="bower_components/highcharts/highcharts.js")
+            script(src="bower_components/highcharts/highcharts-more.js")     
+            script(src="assets/js/main.js")
+            script(src="bower_components/wnumb/wNumb.js")
+            script(src="bower_components/nouislider/distribute/nouislider.min.js")
+            script(src="bower_components/mustache.js/mustache.min.js")
+            //script(src="assets/js/hammer.min.js")
+            //script(src="assets/js/jquery.hammer.js")
+
+            script(src="assets/js/devices.js")
+
+            //script(src="assets/js/geo.js")
+            script(src="bower_components/moment/min/moment-with-locales.min.js")
+            script(src="bower_components/engine.io/engine.io.js")
+    
+            script(src="assets/js/graphs.js")

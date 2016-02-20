@@ -1,0 +1,848 @@
+@import "main.less";
+
+body, html {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	background: #333;
+	color: @textColorPrimary;
+	overflow: hidden;
+}
+
+@media screen and ( max-width: 499px ) {
+	.Screens {
+		#Devices {
+			.Planrit {
+				display: none;
+			}
+		}
+	}
+}
+
+li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	clear: both;
+}
+li span {
+	display: block;
+	width: 20px;
+	height: 20px;
+	margin: 0 10px 0 0;
+	float: left;
+}
+
+h1 {
+	text-align: center;
+}
+
+header {
+	height: 10vh;
+	width: 100%;
+	background: #333;
+	color: #fff;
+	line-height: 10vh;
+	padding: 0 3vh;
+	box-shadow: 0 0 5px 1px rgba(0,0,0,0.5);
+	z-index: 9999;
+	border-bottom: 1px solid #aaa;
+	position: relative;
+
+	h1 {
+		margin: 0;
+		font-size: 1.2rem;
+	}
+
+	.MenuIcon {
+		color: @textColorPrimary;
+		position: absolute;
+		left: 3vh;
+		top: 0;
+		font-size: 1.5rem;
+	}
+}
+
+.Room {
+	h2 {
+		text-align: left;
+		margin: 0;
+		padding: 3.5vh;
+		text-transform: uppercase;
+		background: #444;
+		border-top: 1px solid #333;
+		font-size: 0.8rem;
+		letter-spacing: 0.1em;
+		position: relative;
+		border-bottom: 1px solid #555;
+		transition: all 0.3s;
+
+		span {
+			position: absolute;
+			top: 3.5vh;
+			right: 10vh;
+			color: @colorSecondary;
+		}
+
+		i {
+			position: absolute;
+			right: 2vh;
+			top: 3.5vh;
+			color: #aaa;
+			transition: all 0.3s;
+		}
+	}
+
+	.Devices {
+		display: block;
+		height: 0px;
+		transition: all 0.3s;
+		overflow: hidden;
+	}
+
+	&.Active {
+		h2 {
+			background: #555;
+		}
+
+		i {
+			transform: rotateX(180deg);
+		}
+
+		.Devices {
+			height: auto;
+		}
+	}
+}
+
+
+
+#Menu {
+	background: #111;
+	//box-shadow: 0px -1px 10px 0px rgba(0,0,0,0.5);
+	height: 10vh;
+	width: 100%;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	z-index: 9999;
+
+	.Button {
+		padding: 0;
+		text-align: center;
+		float: left;
+		width: 25%;
+		height: 10vh;
+		position: relative;
+		overflow: hidden;
+		line-height: 10vh;
+		border-bottom: 0;
+		border-radius: 0;
+		border-top: 4px solid #111;
+
+		.Inner {
+			background: rgb(100,100,100);
+			height: 50px;
+			width: 50px;
+			margin: -25px 0 0 -25px;
+			position:absolute;
+			display:block;
+			opacity:0;
+			vertical-align:middle;
+		}
+
+		.Overlay {
+			background: rgba(200,200,200,0);
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			display: table;
+
+			i {
+				text-align: center;
+				font-size: 5vh;
+				margin-top: 2vh;
+			}
+
+			span {
+				display: none;
+			}
+		}
+
+		&.Active {
+			
+			background: #333;
+			border-top: 4px solid @colorTertiary;
+			//box-shadow: 0 0 10px 2px rgba(0,0,0,0.15);
+
+			.Overlay {
+				i {
+					font-size: 5vh;
+					margin-top: 2vh;
+				}
+			}
+		}
+	}
+}
+
+.HomeScreen {
+
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	padding: 0vh;
+
+	h3 {
+		text-align: center;
+
+		//text-transform: uppercase;
+		//text-shadow: 0px 2px 2px rgba(0,0,0,1);
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		height: 8vh;
+		line-height: 8vh;
+		background: #555;
+		font-weight: normal;
+		font-size: 1rem;
+
+		.MenuIcon {
+			position: absolute;
+			top: 0;
+			left: 1rem;
+		}
+	}
+
+	& > div {
+		height: 10vh;
+		line-height: 10vh;
+		text-align: center;
+		background: mix(@colorPrimary, #000, 40%);
+		//border: 1px solid rgba(255,255,255,0.2);
+		color: #fff;
+		position: relative;
+		margin: 2vh;
+		border-radius: 5px;
+	}
+
+	.Distance {
+		
+		p {
+			margin: 0;
+			padding: 0;
+		}
+	}
+
+	.NextTransport {
+
+		.Station {
+			text-align: left;
+			display: block;
+			width: 100%;
+			padding: 0 0 0 16vh;
+		}
+
+		i {
+			display: none;
+			position: absolute;
+			left: 0;
+			top: 0;
+			font-size: 2.5rem;
+			height: 100%;
+			width: 10vh;
+			line-height: 10vh;
+			background: mix(@colorPrimary, #000, 90%);
+			color: #000;
+		}
+
+		.Time {
+			position: absolute;
+			left: 7.5vh;
+			bottom: 2.5vh;
+			font-size: 1.5rem;
+			height: 5vh;
+			width: 5vh;
+			line-height: 5vh;
+			background: mix(@colorPrimary, #fff, 50%);
+			color: #000;
+			border-radius: 10vh;
+		}
+	}
+
+}
+
+.Log {
+	display: block;
+	height: 80vh;
+	width: 100%;
+	margin: 0 auto;
+	overflow: auto;
+	padding: 1rem;
+
+	.Entry {
+		
+		border: 1px solid #555;
+		background: #444;
+		padding: 0.5rem;
+		margin: 0 0 0.5rem 0;
+
+		&.Unknown {
+			background: #663333;
+			border-color: #fff;
+
+			div {
+				display: none;
+			}
+
+			&.Active {
+				div {
+					display: block;
+				}
+			}
+		}
+
+		.EntryToolbar {
+			padding: 1rem;
+
+			a {
+				display: inline-block;
+				background: #fff;
+				color: #000;
+				padding: 1rem;
+			}
+		}
+
+		span {
+			padding: 0.5rem;
+			display: inline-block;
+
+			&.Device {
+				
+			}
+
+			&.Id {
+				
+			}
+
+			&.Temperature {
+				
+			}
+
+			&.Humidity {
+				
+			}
+		}
+	}
+}
+
+.Screens {
+	.Screen {
+		position: absolute;
+		width: 100%;
+		height: 110vh;
+		top: 0vh;
+		left: -100%;
+		background: transparent;
+		z-index: 8888;
+		padding-bottom: 15vh;
+		padding-top: 7vh;
+		overflow-y: auto;
+
+		.ScreenMenu {
+			position: absolute;
+			top: 0;
+			left: -80%;
+			width: 80%;
+			height: 100vh;
+			background: #111;
+			z-index: 888;
+			transition: left 0.2s;
+
+			a.Close {
+				cursor: pointer;
+				height: 4rem;
+				display: block;
+				position: relative;
+
+				i {
+					position: absolute;
+					right: 1rem;
+					top: 1rem;
+					font-size: 2rem;
+				}	
+			}
+
+			&.Visible {
+				left: 0;
+			}
+
+			ul {
+				margin: 0;
+				padding: 0;
+
+				li {
+					border-bottom: 1px solid #444;
+					padding: 0;
+
+					a {
+						display: flex;
+						color: #fff;
+						text-decoration: none;
+						height: 4rem;
+						line-height: 4rem;
+						padding: 0 1rem;
+						align-items: center;
+
+						transition: all 0.3s;
+						&:hover {
+							background: mix(@colorSecondary, #000, 80%) !important;
+						}
+
+						i {
+							font-size: 1.6rem;
+							color: @colorSecondary;
+						}
+
+						em {
+							font-style: normal;
+							display: inline-block;
+							margin-left: 1rem;
+						}
+					}
+				}
+			}
+		}
+
+		p {
+			width: 90%;
+			margin: 5vh auto;
+			line-height: 1.5em;
+			color: #ccc;
+			text-align: justify;
+		}
+
+		h3 {
+			text-align: center;
+			width: 100%;
+			margin: 0;
+			padding: 0;
+			height: 7vh;
+			line-height: 7vh;
+			background: #555;
+			font-size: 1rem;
+			position: absolute;
+			top: 0;
+			left: 0;
+
+			.MenuIcon {
+				position: absolute;
+				top: 0;
+				left: 3rem;
+				font-size: 1.3rem;
+			}
+		}
+
+		&#Misc {
+			/*background: #333 url(../images/malin.png) no-repeat center center;
+			background-size: cover;*/
+		}
+
+		.ButtonGrid {
+
+			.clearfix();
+			height: 100%;
+
+			div.Button {
+				width: 50%;
+				height: 31%;
+				float: left;
+				text-align: center;
+				padding-top: 7vh;
+				color: #fff;
+				
+				border-bottom: 1px solid #444;
+				border-right: 1px solid #444;
+
+				&:nth-of-type(2n) {
+					border-right: none;
+				}
+
+				i {
+					font-size: 7vh;
+				}
+
+				span {
+					display: block;
+					margin-top: 2vh;
+				}
+			}
+		}
+
+		.Toolbar {
+			position: absolute;
+			bottom: 10vh;
+			left: 0;
+			width: 100%;
+			background: #AAA;
+			padding: 2vh 1vh;
+			border-top: 1px solid #cacaca;
+
+			.clearfix();
+
+			.Button {
+				width: 48%;
+				text-align: center;
+				background: #dadada;
+				color: #000;
+				margin: 0 1%;
+				border-radius: 1px;
+				float: left;
+
+				.Overlay {
+					padding: 2vh;
+
+					span {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+.Confirm {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	display: none;
+	opacity: 0;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.5);
+	z-index: 99999;
+
+	.Inner {
+		display: none;
+		margin: 40% auto 0 auto;
+		width: 90%;
+		padding: 10px;
+		background: #fff;
+		text-align: center;
+
+		h2 {
+			color: #000;
+			margin: 0;
+		}
+
+		.Yes,
+		.No {
+			margin: 24px 0;
+			border: 0;
+			text-transform: uppercase;
+			border-radius: 2px;
+			box-shadow: 0 2px 3px 1px rgba(0,0,0,0.4);
+			height: 10vh;
+			width: 49%;
+		}
+
+		.Yes {
+			background: @colorPrimary;
+		}
+
+		.No {
+			background: #222;
+			color: #fff;
+		}
+	}
+}
+
+
+
+
+/***************************************************************
+* SENSORS
+**************************************************************/
+#tempChart,
+#humidityChart {
+	/*display: block;
+	width: 100%;
+	height: 33vh;
+	margin-top: 6vh;*/
+}
+
+/***************************************************************
+* WEATHER
+**************************************************************/
+#weather {
+	display: block;
+	height: 100%;
+}
+
+.forecast {
+	text-align: center;
+	line-height: 1;
+	padding: 1vh 0 2vh 0;
+	box-sizing: border-box;
+	width: 90%;
+	height: 25vh;
+	margin: 3vh auto 0 auto;
+	border-bottom: 1px solid @colorSecondary;
+
+	&:last-of-type {
+		border-bottom: none;
+	}
+}
+
+.forecast div {
+	text-align: center;
+	width: 33.3333%;
+	font-size: 12px;
+	font-weight: 200;
+	float: left;
+	color: #fff;
+	letter-spacing: 0.2em;
+}
+
+.forecast strong {
+	display: block;
+	font-size: 12px;
+	margin-bottom: 2vh;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: #ccc;
+	font-weight: 200;
+	text-shadow: 0 1px 2px rgba(0,0,0,1);
+}
+
+.forecast span {
+	color: mix(@colorPrimary, #fff, 70%);
+	font-size: 55px;
+	display: block;
+	margin-bottom: 1vh;
+}
+
+
+
+
+#TellstickOverlay {
+	background: rgba(0,0,0,0.8);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	display: none;
+
+	i {
+		margin-top: 40%;
+	}
+}
+
+#Tellstick {
+
+	height: 82vh;
+	overflow: auto;
+
+	div.Device {
+
+		transition: all 0.3s ease-out;
+
+		display: block;
+		float: none;
+		position: relative;
+		
+		width: 100%;
+		box-sizing: border-box;
+		margin: 1px auto 1px auto;
+		padding: 20px 20px 30px 30px;
+		
+		//border-top: 1px solid #444;
+
+		height: 90px;
+		border-radius: 0px;
+		
+		text-transform: uppercase;
+		text-shadow: 1px 2px 2px rgba(0,0,0,0.3);
+		
+		text-decoration: none;
+		text-align: center;
+		
+		outline: none;
+
+		opacity: 1;
+
+		letter-spacing: 0.1em;
+		color: #ccc;
+		font-weight: 400;
+		font-size: 12px;
+		text-shadow: 0 1px 2px rgba(0,0,0,1);
+
+		background: #292929;
+
+		&.Switch {
+			height: auto;
+			padding-bottom: 14px;
+		}
+
+		&.Inactive {
+			opacity: 0.2;
+		}
+
+		&.On {
+			.Controls {
+				.On {
+					background: @colorPrimary;
+				}
+			}
+		}
+
+		&.Off {
+			.Controls {
+				.Off {
+					background: @colorPrimary;
+				}
+			}	
+		}
+
+		.Controls {
+			/*display: none;*/
+			position: absolute;
+			left: 40px;
+			right: 40px;
+			bottom: 25px;
+
+			&.Switch {
+				position: relative;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				margin-top: 10px;
+				.clearfix();
+			}
+
+			.On,
+			.Off {
+				width: 50%;
+				margin: 1% 0 0 0;
+				text-align: center;
+				display: inline-block;
+				padding: 4%;
+				background: #222;
+				float: left;
+			}
+
+			.On {
+				border-radius: 0 3px 3px 0;
+				//background: @colorPrimary;
+			}
+
+			.Off {
+				border-radius: 3px 0 0 3px;
+				//background: @colorSecondary;
+			}
+
+			.noUi-horizontal {
+				//height: 20px;
+			}
+
+			.noUi-connect {
+				background: @colorPrimary;
+				border: none;
+			}
+
+			.noUi-handle {
+				background: #ddd;
+				transition: 0.2s all ease-in-out;
+				/*width: 50px;
+				height: 40px;
+				left: -26px;
+				top: -9px;*/
+				box-shadow: 0 0 5px 2px rgba(0,0,0,0.2);
+
+				&.noUi-active {
+					/*width: 60px;
+					height: 50px;
+					left: -32px;
+					top: -18px;*/
+					background: #fff;
+					box-shadow: 0 0 20px 4px rgba(0,0,0,0.5);
+				}
+
+				&:after,
+				&:before {
+					display: none;
+				}
+			}
+
+			.noUi-background {
+				background: #222;
+				box-shadow: none;
+			}
+		}
+	}
+}
+
+
+#Auth {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba( 0, 0, 0, 0.5 );
+	z-index: 99999;
+
+	form {
+		background: #ccc;
+		border-radius: 3px;
+		padding: 20px;
+		text-align: center;
+		width: 80%;
+		margin: 10% auto 0 auto;
+		color: #fff;
+		box-sizing: border-box;
+		box-shadow: 0 0 10px 0px rgba(255,255,255,0.4);
+		background-color: #c16;
+		text-shadow: 0 2px 1px #000;
+		background-image: -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, rgba(255, 255, 255, .2)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.75, rgba(255, 255, 255, .2)), color-stop(.75, transparent), to(transparent));
+		background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+		background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+		background-image: -ms-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+		background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+		background-image: linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+
+		h2 {
+			margin: 0 0 15px 0;
+			text-transform: uppercase;
+		}
+
+		input {
+			padding: 10px;
+			width: 100%;
+			background: rgba( 0, 0, 0, 0.7 );
+			color: rgba( 255,255,255, 0.8);
+			border: none;
+			box-sizing: border-box;
+			text-align: center;
+			font-size: 24px;
+		}
+	}
+
+}
+		
+
+body.Blurred {
+	overflow: hidden;
+}
+
+body.Blurred #Auth {
+	display: block;
+}
+
+body.Blurred #Tellstick {
+	-webkit-filter: blur(10px);
+		filter: blur(10px);
+}

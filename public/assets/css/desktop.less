@@ -1,0 +1,891 @@
+@import "main.less";
+
+@media screen and ( min-width: 500px ) {
+
+	body {
+		background: #111;
+		overflow: hidden;
+	}
+
+	@skew: skew(20deg, -11deg);
+	@skew: none;
+
+	#EditDevices {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: #fff;
+		color: #000;
+		z-index: 9999;
+
+		.ConfigDevice {
+			width: 50%;
+			height: auto;
+			background: #ccc;
+			margin: 10px;
+			padding: 20px;
+
+			dl {
+				.clearfix();
+			}
+
+			dt {
+				clear: left;
+				float: left;
+				width: 100px;
+			}
+
+			dd {
+				float: left;
+			}
+		}
+	}
+
+	.Log {
+		display: block;
+		height: 80%;
+		width: 90%;
+		margin: 0 auto;
+		overflow: auto;
+		background: #000;
+		border: 1px solid #fff;
+
+		.Entry {
+			
+			border-bottom: 1px solid #444;
+			background: #333;
+
+			&.Unknown {
+				background: #663333;
+				border-color: #fff;
+
+				div {
+					display: none;
+				}
+
+				&.Active {
+					div {
+						display: block;
+					}
+				}
+			}
+
+			.EntryToolbar {
+				padding: 1rem;
+
+				a {
+					display: inline-block;
+					background: #fff;
+					color: #000;
+					padding: 1rem;
+				}
+			}
+
+			span {
+				padding: 1rem;
+				display: inline-block;
+
+				&.Device {
+					width: 250px;
+				}
+
+				&.Id {
+					width: 100px;
+				}
+
+				&.Temperature {
+					width: 200px;
+				}
+
+				&.Humidity {
+					width: 200px;
+				}
+			}
+		}
+	}
+
+	.RoomPop {
+		display: block;
+		position: absolute;
+		width: 200px;
+		padding: 0.5rem;
+		height: auto;
+		border-radius: 4px;
+		background: rgba(200,200,200,1);
+		box-shadow: -20px 19px 50px 2px rgba(0,0,0,0.5);
+		z-index: 99999;
+		transform: @skew;
+
+		.Name, .Overlay {
+			text-align: center;
+			font-weight: bold;
+			color: #000;
+			margin-top: 5px;
+		}
+
+		.Device {
+			position: relative;
+			min-height: 4rem;
+			height: auto;
+
+			&.Switch {
+				&.On {
+					.Controls {
+						.On {
+							background: @colorPrimary;
+						}
+					}
+				}
+
+				&.Off {
+					.Controls {
+						.Off {
+							background: @colorPrimary;
+						}
+					}	
+				}
+			}
+		}
+
+		.Controls {
+			position: absolute;
+			left: 15px;
+			right: 20px;
+			bottom: 15px;
+
+			&.Switch {
+				position: relative;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				margin: 1rem;
+				.clearfix();
+			}
+
+			.On,
+			.Off {
+				width: 50%;
+				margin: 1% 0 0 0;
+				text-align: center;
+				display: inline-block;
+				padding: 4%;
+				background: #222;
+				float: left;
+			}
+
+			.On {
+				border-radius: 0 3px 3px 0;
+			}
+
+			.Off {
+				border-radius: 3px 0 0 3px;
+			}
+
+			.noUi-horizontal {
+				//height: 20px;
+			}
+
+			.noUi-connect {
+				background: @colorPrimary;
+				border: none;
+			}
+
+			.noUi-handle {
+				background: #ddd;
+				transition: 0.2s all ease-in-out;
+				box-shadow: 0 0 5px 2px rgba(0,0,0,0.2);
+
+				&.noUi-active {
+					background: #fff;
+					box-shadow: 0 0 20px 4px rgba(0,0,0,0.5);
+				}
+
+				&:after,
+				&:before {
+					display: none;
+				}
+			}
+
+			.noUi-background {
+				background: #222;
+				box-shadow: none;
+			}
+		}
+	}
+
+	.PopOverlay {
+		background: rgba( 0,0,0,0.6 );
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		transition: all 0.3s;
+		z-index: 8888;
+	}
+
+	div#Menu {
+		/*display: none;*/
+		width: 8%;
+		height: 100%;
+		top: 0;
+		right: 0;
+		left: initial;
+		bottom: initial;
+
+		div.Button {
+			float: none;
+			width: 100%;
+
+			height: 60px;
+			line-height: 60px;
+
+			.Overlay {
+				i {
+					font-size: 32px;
+					margin-top: 12px;
+				}
+			}
+
+			&.Active {
+				border-top: 0;
+				border-left: 4px solid @colorTertiary;
+				
+				.Overlay {
+					i {
+						font-size: 32px;
+						margin-top: 12px;
+					}
+				}
+			}
+		}
+	}
+
+	#Wrapper {
+		margin: 0 auto;
+		position: absolute;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		//border: 3px solid @colorPrimary;
+		//background: green;
+		//width: 100% !important;
+		//height: 100% !important;
+	}
+
+	.HomeScreen {
+		position: absolute;
+		width: 20%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		display: none;
+		//border-right: 3px solid @colorPrimary;
+
+		.Ip,
+		.Distance {
+		display: none;
+		}
+	}
+
+	.Screens {
+
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+
+		.Screen {
+			padding-bottom: 0 !important;
+
+			div.ScreenMenu {
+				height: 100vh;
+				top: 0;
+				left: -250px;
+				width: 250px;
+				z-index: 9999;
+
+				&.Visible {
+					left: 0;
+				}
+
+				a.Close {
+					cursor: pointer;
+					height: 4rem;
+					display: block;
+					position: relative;
+
+					i {
+						position: absolute;
+						right: 1rem;
+						top: 1rem;
+						font-size: 2rem;
+					}	
+				}
+
+				ul {
+					li {
+						
+						a {
+							i {
+								font-size: 1.6rem;
+							}
+						}
+					}
+				}
+			}
+
+			h3 {
+				background: transparent !important;
+				width: auto;
+				z-index: 8888;
+
+				span {
+					display: none;
+				}
+			}
+		}
+
+		#Devices {
+			left: 0px;
+			top: 0;
+			width: 92%;
+			height: 100%;
+    		overflow: hidden;
+    		background: transparent;
+    		padding-top: 0;
+			
+			.Planrit {
+
+				display: block;
+				position: relative;
+				width: 96%;
+				margin: 20px 2%;
+				padding: 0;
+				box-sizing: border-box;
+
+				//background: yellow;
+
+				svg {
+					width: 100%;
+					height: auto;
+					//max-height: 250px;
+					transform: @skew;
+				}
+
+				.TempLabel {
+					display: block;
+					background: rgba(0,0,0,0.2);
+					color: #fff;
+					border-radius: 5px;
+					line-height: 30px;
+					text-align: center;
+					
+					span {
+						display: inline-block;
+						&:first-child {
+							&:after {
+								content: ' / ';
+								margin: 0 5px;
+							}
+						}
+					}
+				}
+
+				.Rum {
+					fill: #222;
+					transition: all 0.5s;
+
+					&:hover {
+						fill: @colorTertiary !important;
+					}
+				}
+
+				#Walls {
+					fill: #000;
+					//stroke: #333;
+				}
+
+				@roomActiveColor: @colorPrimary;
+
+				&.Office {
+					#Office {
+						fill: @roomActiveColor;
+					}
+
+					&.Office10 {
+						#Office {
+							fill: mix(@roomActiveColor, #000, 10%);
+						}
+					}
+
+					&.Office20 {
+						#Office {
+							fill: mix(@roomActiveColor, #000, 20%);
+						}
+					}
+
+					&.Office30 {
+						#Office {
+							fill: mix(@roomActiveColor, #000, 30%);
+						}
+					}
+
+					&.Office40 {
+						#Office {
+							fill: mix(@roomActiveColor, #000, 40%);
+						}
+					}
+
+					&.Office50 {
+						#Office {
+							fill: mix(@roomActiveColor, #000, 50%);
+						}
+					}
+
+					&.Office60 {
+						#Office {
+							fill: mix(@roomActiveColor, #000, 60%);
+						}
+					}
+
+					&.Office70 {
+						#Office {
+							fill: mix(@roomActiveColor, #000, 70%);
+						}
+					}
+
+					&.Office80 {
+						#Office {
+							fill: mix(@roomActiveColor, #000, 80%);
+						}
+					}
+
+					&.Office90 {
+						#Office {
+							fill: mix(@roomActiveColor, #000, 90%);
+						}
+					}
+
+					&.Office100 {
+						#Office {
+							fill:@roomActiveColor;
+						}
+					}
+				}
+
+				
+
+				&.Kitchen {
+					#Kitchen {
+						fill: @roomActiveColor;
+					}
+
+					&.Kitchen10 {
+						#Kitchen {
+							fill: mix(@roomActiveColor, #000, 10%);
+						}
+					}
+
+					&.Kitchen20 {
+						#Kitchen {
+							fill: mix(@roomActiveColor, #000, 20%);
+						}
+					}
+
+					&.Kitchen30 {
+						#Kitchen {
+							fill: mix(@roomActiveColor, #000, 30%);
+						}
+					}
+
+					&.Kitchen40 {
+						#Kitchen {
+							fill: mix(@roomActiveColor, #000, 40%);
+						}
+					}
+
+					&.Kitchen50 {
+						#Kitchen {
+							fill: mix(@roomActiveColor, #000, 50%);
+						}
+					}
+
+					&.Kitchen60 {
+						#Kitchen {
+							fill: mix(@roomActiveColor, #000, 60%);
+						}
+					}
+
+					&.Kitchen70 {
+						#Kitchen {
+							fill: mix(@roomActiveColor, #000, 70%);
+						}
+					}
+
+					&.Kitchen80 {
+						#Kitchen {
+							fill: mix(@roomActiveColor, #000, 80%);
+						}
+					}
+
+					&.Kitchen90 {
+						#Kitchen {
+							fill: mix(@roomActiveColor, #000, 90%);
+						}
+					}
+
+					&.Kitchen100 {
+						#Kitchen {
+							fill:@roomActiveColor;
+						}
+					}
+				}
+
+				&.Hallway {
+					#Hallway {
+						fill: @roomActiveColor;
+					}
+
+					&.Hallway10 {
+						#Hallway {
+							fill: mix(@roomActiveColor, #000, 10%);
+						}
+					}
+
+					&.Hallway20 {
+						#Hallway {
+							fill: mix(@roomActiveColor, #000, 20%);
+						}
+					}
+
+					&.Hallway30 {
+						#Hallway {
+							fill: mix(@roomActiveColor, #000, 30%);
+						}
+					}
+
+					&.Hallway40 {
+						#Hallway {
+							fill: mix(@roomActiveColor, #000, 40%);
+						}
+					}
+
+					&.Hallway50 {
+						#Hallway {
+							fill: mix(@roomActiveColor, #000, 50%);
+						}
+					}
+
+					&.Hallway60 {
+						#Hallway {
+							fill: mix(@roomActiveColor, #000, 60%);
+						}
+					}
+
+					&.Hallway70 {
+						#Hallway {
+							fill: mix(@roomActiveColor, #000, 70%);
+						}
+					}
+
+					&.Hallway80 {
+						#Hallway {
+							fill: mix(@roomActiveColor, #000, 80%);
+						}
+					}
+
+					&.Hallway90 {
+						#Hallway {
+							fill: mix(@roomActiveColor, #000, 90%);
+						}
+					}
+
+					&.Hallway100 {
+						#Hallway {
+							fill:@roomActiveColor;
+						}
+					}
+				}
+
+				&.Bedroom {
+					#Bedroom {
+						fill: @roomActiveColor;
+					}
+
+					&.Bedroom10 {
+						#Bedroom {
+							fill: mix(@roomActiveColor, #000, 10%);
+						}
+					}
+
+					&.Bedroom20 {
+						#Bedroom {
+							fill: mix(@roomActiveColor, #000, 20%);
+						}
+					}
+
+					&.Bedroom30 {
+						#Bedroom {
+							fill: mix(@roomActiveColor, #000, 30%);
+						}
+					}
+
+					&.Bedroom40 {
+						#Bedroom {
+							fill: mix(@roomActiveColor, #000, 40%);
+						}
+					}
+
+					&.Bathroom50 {
+						#Bedroom {
+							fill: mix(@roomActiveColor, #000, 50%);
+						}
+					}
+
+					&.Bedroom60 {
+						#Bedroom {
+							fill: mix(@roomActiveColor, #000, 60%);
+						}
+					}
+
+					&.Bedroom70 {
+						#Bedroom {
+							fill: mix(@roomActiveColor, #000, 70%);
+						}
+					}
+
+					&.Bedroom80 {
+						#Bedroom {
+							fill: mix(@roomActiveColor, #000, 80%);
+						}
+					}
+
+					&.Bedroom90 {
+						#Bedroom {
+							fill: mix(@roomActiveColor, #000, 90%);
+						}
+					}
+
+					&.Bedroom100 {
+						#Bedroom {
+							fill:@roomActiveColor;
+						}
+					}
+				}
+
+				&.Livingroom {
+					#Livingroom {
+						fill: @roomActiveColor;
+					}
+
+					&.Livingroom10 {
+						#Livingroom {
+							fill: mix(@roomActiveColor, #000, 10%);
+						}
+					}
+
+					&.Livingroom20 {
+						#Livingroom {
+							fill: mix(@roomActiveColor, #000, 20%);
+						}
+					}
+
+					&.Livingroom30 {
+						#Livingroom {
+							fill: mix(@roomActiveColor, #000, 30%);
+						}
+					}
+
+					&.Livingroom40 {
+						#Livingroom {
+							fill: mix(@roomActiveColor, #000, 40%);
+						}
+					}
+
+					&.Livingroom50 {
+						#Livingroom {
+							fill: mix(@roomActiveColor, #000, 50%);
+						}
+					}
+
+					&.Livingroom60 {
+						#Livingroom {
+							fill: mix(@roomActiveColor, #000, 60%);
+						}
+					}
+
+					&.Livingroom70 {
+						#Livingroom {
+							fill: mix(@roomActiveColor, #000, 70%);
+						}
+					}
+
+					&.Livingroom80 {
+						#Livingroom {
+							fill: mix(@roomActiveColor, #000, 80%);
+						}
+					}
+
+					&.Livingroom90 {
+						#Livingroom {
+							fill: mix(@roomActiveColor, #000, 90%);
+						}
+					}
+
+					&.Livingroom100 {
+						#Livingroom {
+							fill:@roomActiveColor;
+						}
+					}
+				}
+
+				&.Bathroom {
+					#Bathroom {
+						fill: @roomActiveColor;
+					}
+
+					&.Bathroom10 {
+						#Bathroom {
+							fill: mix(@roomActiveColor, #000, 10%);
+						}
+					}
+
+					&.Bathroom20 {
+						#Bathroom {
+							fill: mix(@roomActiveColor, #000, 20%);
+						}
+					}
+
+					&.Bathroom30 {
+						#Bathroom {
+							fill: mix(@roomActiveColor, #000, 30%);
+						}
+					}
+
+					&.Bathroom40 {
+						#Bathroom {
+							fill: mix(@roomActiveColor, #000, 40%);
+						}
+					}
+
+					&.Bathroom50 {
+						#Bathroom {
+							fill: mix(@roomActiveColor, #000, 50%);
+						}
+					}
+
+					&.Bathroom60 {
+						#Bathroom {
+							fill: mix(@roomActiveColor, #000, 60%);
+						}
+					}
+
+					&.Bathroom70 {
+						#Bathroom {
+							fill: mix(@roomActiveColor, #000, 70%);
+						}
+					}
+
+					&.Bathroom80 {
+						#Bathroom {
+							fill: mix(@roomActiveColor, #000, 80%);
+						}
+					}
+
+					&.Bathroom90 {
+						#Bathroom {
+							fill: mix(@roomActiveColor, #000, 90%);
+						}
+					}
+
+					&.Bathroom100 {
+						#Bathroom {
+							fill:@roomActiveColor;
+						}
+					}
+				}
+
+			}
+
+			#Tellstick {
+				display: none;
+			}
+		}
+
+		#Sensors {
+			width: 92%;
+
+			#chartWrapper {
+				height: 100%;
+				width: 100%;
+
+				.Temperature,
+				.Humidity {
+					.clearfix();
+
+					div.Chart {
+						width: 46%;
+						height: 350px;
+						margin: 2%;
+						float: left;
+					}
+				}
+			}
+		}
+
+		#Calendar {
+			width: 50%;
+			height: 50%;
+			bottom: 0;
+			right: 0;
+			top: initial;
+			display: none;
+		}
+
+		#Weather {
+			width: 92%;
+			height: 100%;
+		}
+	}
+
+}
+
+@media screen and (min-width: 1023px) and (max-width: 1199px) {
+	.Planrit {
+		svg {
+			max-height: 630px !important;
+		}
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.Planrit {
+		svg {
+			max-height: 1000px !important;
+		}
+	}
+
+	body {
+		background: #444 !important;
+	}
+
+	div#Wrapper {
+		background: #222;
+		max-width: 1200px;
+	    max-height: 900px;
+	    margin: 5% auto;
+	    display: block;
+	    position: relative;
+	    overflow: hidden;
+	    border: 1px solid #666;
+	    box-shadow: 0 20px 20px rgba(0,0,0,0.5);
+
+	    #Menu {
+	    	position: absolute;
+	    }
+	}
+}

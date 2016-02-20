@@ -1,0 +1,31 @@
+{
+  "name": "home-automation",
+  "description": "Home automation with tellstick & nodejs",
+  "main": "./main.js",
+  "authors": [
+    "Fredrik Grääs <fredrik@graas.se>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.0",
+    "highcharts": "^4.2.3",
+    "nouislider": "^8.3.0",
+    "font-awesome": "Font-Awesome#^4.5.0",
+    "fastclick": "^1.0.6",
+    "velocity": "^1.2.3",
+    "wnumb": "^1.0.2",
+    "mustache.js": "mustache#^2.2.1",
+    "moment": "^2.11.2",
+    "engine.io": "^1.6.8"
+  }
+}

@@ -1,0 +1,109 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        title Example App
+        link(href="http://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400")
+        link(href="http://fonts.googleapis.com/css?family=Unica+One")
+        link(href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
+        link(href="assets/noUiSlider.7.0.10/jquery.nouislider.css")
+        link(href="assets/noUiSlider.7.0.10/jquery.nouislider.pips.css")
+        link(href="assets/webfont/climacons-font.css")
+        link(href="assets/css/mobile.css")
+        link(href="assets/css/desktop.css")
+
+        meta(name="viewport", content="width=device-width, initial-scale=1, user-scalable=no")
+
+        script(src="assets/js/jquery-2.1.1.min.js")
+        script(src="assets/js/fastclick.min.js")
+        script(src="//cdn.jsdelivr.net/velocity/1.2.2/velocity.min.js")
+        script(src="//cdn.jsdelivr.net/velocity/1.2.2/velocity.ui.min.js")
+    
+        meta(name="mobile-web-app-capable", content="yes")
+        meta(name="apple-mobile-web-app-capable", content="yes")
+    body
+        div#Wrapper
+            div.HomeScreen.cf
+                div.Ip
+                    | Visiting from IP: whatever...
+                div.Distance
+                    p.Calculating
+                        | Calculating distance to home ...
+                div.Log
+
+            div.Planrit
+                div.RitRoom#Office
+                    h2
+                        | Office
+                div.RitRoom#Hallway
+                    h2
+                        | Hallway
+                div.RitRoom#Kitchen
+                    h2
+                        | Kitchen
+                div.RitRoom#Livingroom
+                    h2
+                        | Livingroom
+                div.RitRoom#Bedroom
+                    h2
+                        | Bedroom
+                div.RitRoom#Bathroom
+                    h2
+                        | Bathroom
+
+            div.Screens.cf
+                div#Devices.Screen
+                    h3
+                        | Devices
+                    div.Toolbar
+                        div.Off.Button
+                            div.Inner
+                            div.Overlay
+                                i.fa.fa-moon-o
+                                span
+                                    | All off
+                    div#Tellstick
+                    div#TellstickOverlay
+                        i.fa.fa-spinner.fa-spin.fa-5x">
+                div#Weather.Screen
+                    h3
+                        | Weather
+                div#Sensors.Screen
+                    h3
+                        | Sensors
+                    div#chartWrapper.cf
+                        div.Chart#tempChart(data-unit=" °C", data-label="Temperature last 12h", data-type="temperature", data-deviceid="11|32|54|135|136", data-interval="hour", data-limit="48")
+                        div.Chart#humidityChart(data-unit=" %", data-label="Humidity last 12h", data-type="humidity", data-deviceid="11|32|54|135|136", data-interval="hour", data-limit="48")
+
+            div#Menu
+                div.Devices.Button(data-screen="Devices")
+                    div.Inner
+                    div.Overlay
+                        i.fa.fa-lightbulb-o
+                        span
+                            | Lighting
+                div.Sensors.Button(data-screen="Sensors")
+                    div.Inner
+                    div.Overlay
+                        i.fa.fa-bar-chart
+                        span
+                            | Sensors
+
+            script(src="assets/js/wNumb.min.js")
+            script(src="assets/noUiSlider.7.0.10/jquery.nouislider.all.min.js")
+            script(src="assets/js/moment-with-locales.js")
+            script(src="assets/js/mustache.min.js")
+            script(src="assets/js/hammer.min.js")
+            script(src="assets/js/jquery.hammer.js")
+
+            script(src="assets/js/devices.js")
+
+            script(src="assets/js/geo.js")
+            script(src="assets/js/moment-with-locales.js")
+            script(src="assets/js/engine.io.js")
+            script(src="libs/highcharts/js/highcharts.js")
+            
+            <!-- Grafer -->
+            script(src="assets/js/graphs.js")
+
+            script(src="assets/js/vasttrafik.js")
